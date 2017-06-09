@@ -18,7 +18,7 @@ import {defaultLat,
 
 interface WeatherAppState {
   weather: null | JSON;
-  location: null | JSON;
+  location: any;
   units: 'F' | 'C';
   lat: string | number;
   lon: string | number;
@@ -78,7 +78,7 @@ class WeatherApp extends React.Component<{}, WeatherAppState> {
     this.setState({weather, isLoading: false});
   }
 
-  setLocation (location: JSON) {
+  setLocation (location: any) {
     this.setState({location});
   }
 
@@ -120,8 +120,9 @@ class WeatherApp extends React.Component<{}, WeatherAppState> {
   }
 
   handleChange (event: any) {
+    const {value} = this.state
     this.setState({value: event.currentTarget.value});
-    this.fetchUserInput(event.currentTarget.value);
+    this.fetchUserInput(value);
   }
 
   handleSubmit (event: CustomEvent) {
