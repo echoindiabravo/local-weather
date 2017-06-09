@@ -2,12 +2,16 @@
   "name": "weather",
   "version": "0.1.0",
   "private": true,
-  "homepage": "https://bueide.net/weather",
+  "homepage": ".",
   "dependencies": {
     "@types/jest": "^19.2.4",
     "@types/node": "^7.0.29",
     "@types/react": "^15.0.27",
     "@types/react-dom": "^15.5.0",
+    "babel-eslint": "^7.2.3",
+    "eslint-config-react-app": "^1.0.4",
+    "eslint-plugin-import": "^2.3.0",
+    "eslint-plugin-node": "^5.0.0",
     "moment": "^2.18.1",
     "react": "^15.5.4",
     "react-dom": "^15.5.4"
@@ -15,6 +19,10 @@
   "devDependencies": {
     "@types/enzyme": "^2.8.0",
     "enzyme": "^2.8.2",
+    "eslint": "^3.19.0",
+    "eslint-config-standard": "^10.2.1",
+    "eslint-plugin-promise": "^3.5.0",
+    "eslint-plugin-standard": "^3.0.1",
     "react-addons-test-utils": "^15.5.1",
     "react-scripts-ts": "2.2.0"
   },
