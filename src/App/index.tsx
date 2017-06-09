@@ -133,7 +133,7 @@ class WeatherApp extends React.Component<{}, WeatherAppState> {
 
   render () {
     const {weather, location, value, units, seeHourly, hourlyMsg, isLoading} = this.state;
-    //if (!weather || !location) { return null; }
+    if (!weather || !location) { return null; }
 
     return (
       <div className="site-wrapper">
