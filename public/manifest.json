@@ -1,0 +1,15 @@
+{
+  "short_name": "Local Weather",
+  "name": "Your Local Weather in Style",
+  "icons": [
+    {
+      "src": "favicon.png",
+      "sizes": "73x72",
+      "type": "image/png"
+    }
+  ],
+  "start_url": "./index.html",
+  "display": "standalone",
+  "theme_color": "#d2e1dd",
+  "background_color": "#d2e1dd"
+}
