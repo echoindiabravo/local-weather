@@ -1,12 +1,7 @@
 import * as React from 'react';
+import {FormProps} from '../types';
 
-interface SearchBar {
-  value: string;
-  onChange: any;
-  onSubmit: any;
-}
-
-const SearchBar = ({value, onChange, onSubmit}: SearchBar) => (
+const SearchBar = ({value, onChange, onSubmit}: FormProps) => (
   <form onSubmit={onSubmit} className="u-pull-right">
     <input type="text" value={value} onChange={onChange} />
     <input type="submit" value="Go!" />

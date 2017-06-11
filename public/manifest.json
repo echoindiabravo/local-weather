@@ -3,7 +3,7 @@
   "name": "Your Local Weather in Style",
   "icons": [
     {
-      "src": "favicon.png",
+      "src": "./favicon.png",
       "sizes": "73x72",
       "type": "image/png"
     }

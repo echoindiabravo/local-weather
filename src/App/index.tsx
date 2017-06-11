@@ -3,6 +3,7 @@ import './index.css';
 import {Current, HourlyForecast, SevenDayForecast} from '../Presentational';
 import {Header, Footer} from '../Template';
 import {Loading} from '../utilities';
+import {WeatherA, LocationA, SearchProps} from '../types';
 import {defaultLat,
         defaultLon,
         defaultSearch,
@@ -17,8 +18,8 @@ import {defaultLat,
         mqKey} from '../constants';
 
 interface WeatherAppState {
-  weather: null | JSON;
-  location: any;
+  weather: null | WeatherA;
+  location: null | LocationA;
   units: 'F' | 'C';
   lat: string | number;
   lon: string | number;
@@ -62,8 +63,6 @@ class WeatherApp extends React.Component<{}, WeatherAppState> {
       navigator.geolocation.getCurrentPosition(position =>
         this.setState({lat: position.coords.latitude, lon: position.coords.longitude})
       );
-    } else {
-      ;
     }
   }
 
@@ -74,11 +73,11 @@ class WeatherApp extends React.Component<{}, WeatherAppState> {
     this.fetchLocation(lat, lon);
   }
 
-  setWeather (weather: JSON) {
+  setWeather (weather: WeatherA) {
     this.setState({weather, isLoading: false});
   }
 
-  setLocation (location: any) {
+  setLocation (location: LocationA) {
     this.setState({location});
   }
 
@@ -119,14 +118,13 @@ class WeatherApp extends React.Component<{}, WeatherAppState> {
     }
   }
 
-  handleChange (event: any) {
-    const {value} = this.state
-    this.setState({value: event.currentTarget.value});
-    this.fetchUserInput(value);
+  handleChange<T extends SearchProps> (e: React.ChangeEvent<T>): void {
+    this.setState({value: e.currentTarget.value});
+    this.fetchUserInput(e.currentTarget.value);
   }
 
-  handleSubmit (event: CustomEvent) {
-    event.preventDefault();
+  handleSubmit (e: React.FormEvent<void>): void {
+    e.preventDefault();
     const {lat, lon} = this.state;
     this.fetchWeather(lat, lon);
     this.fetchLocation(lat, lon);
