@@ -37,7 +37,7 @@ const HourlyForecast = ({weather, units, seeHourly, hourlyMsg, onClick}: HourlyF
                 <span 
                   style={{opacity: 0.4}}
                 > {units === 'F' ? Math.round(weather.hourly.data[hour].apparentTemperature) :
-                 Math.round(toCelsius(weather.hourly.data[hour].apparentTemperature))}&#176; | Precip {
+                 Math.round(toCelsius(weather.hourly.data[hour].apparentTemperature))}&#176; | Precip: {
                    Math.round(weather.hourly.data[hour].precipProbability)}%
                 </span>
               </span>
