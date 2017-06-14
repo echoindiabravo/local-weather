@@ -37,8 +37,8 @@ class WeatherApp extends React.Component<{}, WeatherAppState> {
       weather: null,
       location: null,
       units: 'F',
-      lat: defaultLat,
-      lon: defaultLon,
+      lat: '',
+      lon: '',
       value: defaultSearch,
       geocode: null,
       isLoading: false,
@@ -63,14 +63,21 @@ class WeatherApp extends React.Component<{}, WeatherAppState> {
       navigator.geolocation.getCurrentPosition(position =>
         this.setState({lat: position.coords.latitude, lon: position.coords.longitude})
       );
+    } else {
+      this.setState({lat: defaultLat, lon: defaultLon});
     }
   }
 
   componentDidMount () {
     this.getCoords();
+  }
+
+  componentDidUpdate (prevProps: {}, prevState: WeatherAppState) {
     const {lat, lon} = this.state;
-    this.fetchWeather(lat, lon);
-    this.fetchLocation(lat, lon);
+    if (lat !== prevState.lat && lon !== prevState.lon) {
+      this.fetchWeather(lat, lon);
+      this.fetchLocation(lat, lon);
+    }
   }
 
   setWeather (weather: WeatherA) {
@@ -120,12 +127,12 @@ class WeatherApp extends React.Component<{}, WeatherAppState> {
 
   handleChange<T extends SearchProps> (e: React.ChangeEvent<T>): void {
     this.setState({value: e.currentTarget.value});
-    this.fetchUserInput(e.currentTarget.value);
   }
 
   handleSubmit (e: React.FormEvent<void>): void {
     e.preventDefault();
-    const {lat, lon} = this.state;
+    const {lat, lon, value} = this.state;
+    this.fetchUserInput(value);
     this.fetchWeather(lat, lon);
     this.fetchLocation(lat, lon);
   }

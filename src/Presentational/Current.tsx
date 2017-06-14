@@ -9,7 +9,8 @@ const Current = ({weather, location, units}: CurrentProps) => (
     <div className="top-row">
       <div className="three-columns location">
         <h5>
-          {location.address.city.toUpperCase()}, {location.address.state ? location.address.state.toUpperCase() :
+          {location.address.city ? location.address.city.toUpperCase() :
+           'UNDETERMINED'}, {location.address.state ? location.address.state.toUpperCase() :
            location.address.country.toUpperCase()}
         </h5>
       </div>

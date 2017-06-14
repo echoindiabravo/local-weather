@@ -17,6 +17,9 @@
 .env.production.local
 /.vscode
 
+# contains API keys
+/src/components
+
 npm-debug.log*
 yarn-debug.log*
 yarn-error.log*
