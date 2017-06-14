@@ -16,6 +16,7 @@
 .env.test.local
 .env.production.local
 /.vscode
+prepros-6.config
 
 # contains API keys
 /src/components
